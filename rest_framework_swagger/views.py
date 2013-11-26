@@ -63,14 +63,25 @@ class SwaggerResourcesView(APIDocView):
             'basePath': self.host.rstrip('/'),
             'apis': apis,
             'info': {
-                'title': 'Swagger Sample App',
-                'description': 'This is a sample server Petstore server.  You can find out more about Swagger \n'
-                               '    at <a href=\"http://swagger.wordnik.com\">http://swagger.wordnik.com</a> or on irc.freenode.net, #swagger.  For this sample,\n'
-                               '    you can use the api key \"special-key\" to test the authorization filters',
-                'termsOfServiceUrl': 'http://helloreverb.com/terms/',
-                'contact': 'apiteam@wordnik.com',
-                'license': 'Apache 2.0',
-                'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
+                'title': SWAGGER_SETTINGS.get(
+                    'title', 'Swagger Sample App'
+                ),
+                'description': SWAGGER_SETTINGS.get(
+                    'description', 'This is a sample server Petstore server.'
+                ),
+                'termsOfServiceUrl': SWAGGER_SETTINGS.get(
+                    'tos_url', 'http://helloreverb.com/terms/'
+                ),
+                'contact': SWAGGER_SETTINGS.get(
+                    'contact', 'apiteam@wordnik.com'
+                ),
+                'license': SWAGGER_SETTINGS.get(
+                    'license', 'Apache 2.0'
+                ),
+                'licenseUrl': SWAGGER_SETTINGS.get(
+                    'license_url',
+                    'http://www.apache.org/licenses/LICENSE-2.0.html'
+                ),
             },
         })
 
